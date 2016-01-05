@@ -33,6 +33,7 @@ angular.module("onedrive-picker", []).provider("OneDriveSettings", function() {
                     for (var i = 0; i < files.length; i++){
                         scope.odpickerFiles.push(files[i]);
                     }
+                    console.log(scope.odpickerFiles);
                 });
             };
             element.bind("click", function() {
