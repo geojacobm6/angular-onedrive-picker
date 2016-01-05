@@ -1,7 +1,7 @@
-angular-dropbox-box-picker
+angular-onedrive-picker
 ==========================
 
-A simple and cool angular directive which interacts with box and dropbox file pickers
+A simple and cool angular directive which interacts with OneDrive file pickers
 
 Demo
 ==========================
@@ -11,7 +11,7 @@ http://geojacobm6.github.io/angular-onedrive-picker/
 Installation
 ==========================
 
-Download https://github.com/geojacobm6/angular-dropbox-box-picker/archive/master.zip
+Download https://github.com/geojacobm6/angular-onedrive-picker/archive/master.zip
 
 Usage
 ==========================
@@ -63,4 +63,3 @@ Usage
           
  6. Done.
 
- 
