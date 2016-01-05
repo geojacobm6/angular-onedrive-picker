@@ -31,8 +31,8 @@ angular.module("onedrive-picker", []).provider("OneDriveSettings", function() {
             function onedrivesuccess(files){
                 console.log(files);
                 scope.$apply(function() {
-                    for (var i = 0; i < files.length; i++){
-                        scope.odpickerFiles.push(files[i]);
+                    for (var i = 0; i < files.values.length; i++){
+                        scope.odpickerFiles.push(files.values[i]);
                     }
                     console.log(scope.odpickerFiles);
                 });
