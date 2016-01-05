@@ -20,7 +20,7 @@ Usage
  1. Include script in html
  
    ```html
-  <script src="dropbox-picker.min.js"></script>
+  <script src="onedrive-picker.js"></script>
   ```
     For OneDrive:
     ```html
@@ -29,7 +29,7 @@ Usage
     Don't forgot ot replace APP_ID with appkey which get from onedrive app console    https://account.live.com/developers/applications
     
 
- 2. Include the dropbox-picker as a dependency for your app
+ 2. Include the onedrive-picker as a dependency for your app
 
       angular.module('myApp', ['onedrive-picker'])
 
