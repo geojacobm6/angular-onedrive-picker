@@ -1,65 +1,76 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
-    <title>Angular-onedrive-picker by geojacobm6</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-  </head>
-  <body>
-    <section class="page-header">
-      <h1 class="project-name">Angular-onedrive-picker</h1>
-      <h2 class="project-tagline"></h2>
-      <a href="https://github.com/geojacobm6/angular-onedrive-picker" class="btn">View on GitHub</a>
-      <a href="https://github.com/geojacobm6/angular-onedrive-picker/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/geojacobm6/angular-onedrive-picker/tarball/master" class="btn">Download .tar.gz</a>
-    </section>
-
-    <section class="main-content">
-      <h1>
-<a id="angular-onedrive-picker" class="anchor" href="#angular-onedrive-picker" aria-hidden="true"><span class="octicon octicon-link"></span></a>angular-onedrive-picker</h1>
-
-<p>A simple and cool angular directive which interacts with OneDrive file pickers</p>
-
-<h1>
-<a id="demo" class="anchor" href="#demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo</h1>
-
-<p><a href="http://geojacobm6.github.io/angular-onedrive-picker/">http://geojacobm6.github.io/angular-onedrive-picker/</a></p>
-
-<h1>
-<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h1>
-
-<p>Download <a href="https://github.com/geojacobm6/angular-onedrive-picker/archive/master.zip">https://github.com/geojacobm6/angular-onedrive-picker/archive/master.zip</a></p>
-
-<h1>
-<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h1>
-
-<ol>
-<li>
-<p>Include script in html</p>
-
-<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>onedrive-picker.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
-
-<p>For OneDrive:</p>
-
-<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>https://js.live.net/v5.0/OneDrive.js<span class="pl-pds">"</span></span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>onedrive-js<span class="pl-pds">"</span></span> <span class="pl-e">client-id</span>=<span class="pl-s"><span class="pl-pds">"</span>APP_ID<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
-
-<p>Don't forgot ot replace APP_ID with appkey which get from onedrive app console    <a href="https://account.live.com/developers/applications">https://account.live.com/developers/applications</a></p>
-</li>
-<li>
-<p>Include the onedrive-picker as a dependency for your app</p>
-
-<p>angular.module('myApp', ['onedrive-picker'])</p>
-</li>
-<li>
-<p>Configuration</p>
-
-<p>for more details about options got <a href="https://dev.onedrive.com/sdk/javascript-picker-saver.htm">https://dev.onedrive.com/sdk/javascript-picker-saver.htm</a></p>
-
-<pre><code> angular.module('OnedriveControllers', ['onedrive-picker'])
+   <head>
+      <meta charset="UTF-8">
+      <title>Angular-onedrive-picker by geojacobm6</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+      <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+      <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+      <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+   </head>
+   <body ng-app="OnedriveControllers" ng-controller="OneDriveCtrl">
+      <section class="page-header">
+         <h1 class="project-name">Angular-onedrive-picker</h1>
+         <h2 class="project-tagline"></h2>
+         <a href="https://github.com/geojacobm6/angular-onedrive-picker" class="btn">View on GitHub</a>
+         <a href="https://github.com/geojacobm6/angular-onedrive-picker/zipball/master" class="btn">Download .zip</a>
+         <a href="https://github.com/geojacobm6/angular-onedrive-picker/tarball/master" class="btn">Download .tar.gz</a>
+         <a href="https://github.com/geojacobm6/angular-onedrive-picker/fork" class="btn">Fork</a>
+      </section>
+      <section class="page">
+         <button type="button"><a class="btn-primary" href="javascript:;" one-drive-picker odpicker-files="odfiles">OneDrive Picker</a></button>
+         </br>
+         <div>
+            <div class="container col-sm-12">
+               <div class="row show-grid" ng-switch="odfiles.length > 0">
+                  <div ng-switch-when="true">
+                     <div class="col-sm-4" ng-repeat="file in odfiles">
+                        <a href="{{ file.link }}" target="_blank"><img src="images/file1.png" class="img-responsive img-thumbnail"> {{ file.fileName }}</a>
+                        <button type="button" class="close" ng-click="remove($index)"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <hr/>
+         </div>
+      </section>
+      <section class="main-content">
+         <h1>
+            <a id="angular-onedrive-picker" class="anchor" href="#angular-onedrive-picker" aria-hidden="true"><span class="octicon octicon-link"></span></a>angular-onedrive-picker
+         </h1>
+         <p>A simple and cool angular directive which interacts with OneDrive file pickers</p>
+         <h1>
+            <a id="demo" class="anchor" href="#demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo
+         </h1>
+         <p><a href="http://geojacobm6.github.io/angular-onedrive-picker/">http://geojacobm6.github.io/angular-onedrive-picker/</a></p>
+         <h1>
+            <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation
+         </h1>
+         <p>Download <a href="https://github.com/geojacobm6/angular-onedrive-picker/archive/master.zip">https://github.com/geojacobm6/angular-onedrive-picker/archive/master.zip</a></p>
+         <h1>
+            <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage
+         </h1>
+         <ol>
+            <li>
+               <p>Include script in html</p>
+               <div class="highlight highlight-text-html-basic">
+                  <pre>&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>onedrive-picker.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre>
+               </div>
+               <p>For OneDrive:</p>
+               <div class="highlight highlight-text-html-basic">
+                  <pre>&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>https://js.live.net/v5.0/OneDrive.js<span class="pl-pds">"</span></span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>onedrive-js<span class="pl-pds">"</span></span> <span class="pl-e">client-id</span>=<span class="pl-s"><span class="pl-pds">"</span>APP_ID<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre>
+               </div>
+               <p>Don't forgot ot replace APP_ID with appkey which get from onedrive app console    <a href="https://account.live.com/developers/applications">https://account.live.com/developers/applications</a></p>
+            </li>
+            <li>
+               <p>Include the onedrive-picker as a dependency for your app</p>
+               <p>angular.module('myApp', ['onedrive-picker'])</p>
+            </li>
+            <li>
+               <p>Configuration</p>
+               <p>for more details about options got <a href="https://dev.onedrive.com/sdk/javascript-picker-saver.htm">https://dev.onedrive.com/sdk/javascript-picker-saver.htm</a></p>
+               <pre><code> angular.module('OnedriveControllers', ['onedrive-picker'])
 
   .config(['OneDriveSettingsProvider', function(OneDriveSettingsProvider) {
 
@@ -70,32 +81,27 @@
         });
   }])
 </code></pre>
-</li>
-<li>
-<p>Create scope to handle choosed files</p>
-
-<p>.controller('OneDriveCtrl', ['$scope', 'OneDriveSettings', function($scope, OneDriveSettings) {
-      $scope.odfiles = [];</p>
-
-<p>}]);   </p>
-</li>
-<li>
-<p>Add the directive to your HTML element</p>
-
-<pre><code>  &lt;a href="javascript:;" one-drive-picker odpicker-files="odfiles"&gt;OneDrive Picker&lt;/a
+            </li>
+            <li>
+               <p>Create scope to handle choosed files</p>
+               <p>.controller('OneDriveCtrl', ['$scope', 'OneDriveSettings', function($scope, OneDriveSettings) {
+                  $scope.odfiles = [];
+               </p>
+               <p>}]);   </p>
+            </li>
+            <li>
+               <p>Add the directive to your HTML element</p>
+               <pre><code>  &lt;a href="javascript:;" one-drive-picker odpicker-files="odfiles"&gt;OneDrive Picker&lt;/a
 </code></pre>
-</li>
-<li><p>Done.</p></li>
-</ol>
-
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/geojacobm6/angular-onedrive-picker">Angular-onedrive-picker</a> is maintained by <a href="https://github.com/geojacobm6">geojacobm6</a>.</span>
-
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
-
-    </section>
-
-  
-  </body>
+            </li>
+            <li>
+               <p>Done.</p>
+            </li>
+         </ol>
+         <footer class="site-footer">
+            <span class="site-footer-owner"><a href="https://github.com/geojacobm6/angular-onedrive-picker">Angular-onedrive-picker</a> is maintained by <a href="https://github.com/geojacobm6">geojacobm6</a>.</span>
+            <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+         </footer>
+      </section>
+   </body>
 </html>
