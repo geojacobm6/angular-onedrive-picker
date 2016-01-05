@@ -29,6 +29,7 @@ angular.module("onedrive-picker", []).provider("OneDriveSettings", function() {
                 multiselect: OneDriveSettings.multiselect,
             };
             function onedrivesuccess(files){
+                console.log(files);
                 scope.$apply(function() {
                     for (var i = 0; i < files.length; i++){
                         scope.odpickerFiles.push(files[i]);
