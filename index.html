@@ -24,8 +24,8 @@
          <div>
             <div class="container col-sm-12">
                <div class="row show-grid" ng-switch="odfiles.length > 0">
-                  <hr/>
                   <div ng-switch-when="true">
+                     <hr/>
                      <div class="col-sm-4" ng-repeat="file in odfiles">
                         <a href="{{ file.link }}" target="_blank"><img src="images/file1.png" class="img-responsive img-thumbnail"> {{ file.fileName }}</a>
                         <button type="button" class="close" ng-click="remove($index)"><span aria-hidden="true">&times;</span></button>
