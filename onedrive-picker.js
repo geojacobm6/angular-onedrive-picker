@@ -1,5 +1,5 @@
 angular.module("onedrive-picker", []).provider("OneDriveSettings", function() {
-    this.linkType = 'webViewLink', this.multiselect = false, this.theme = 'blue', this.$get = function() {
+    this.linkType = 'webViewLink', this.multiselect = true, this.theme = 'blue', this.$get = function() {
         return {
             linkType: this.linkType,
             multiSelect: this.multiSelect,
