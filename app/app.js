@@ -6,8 +6,8 @@ angular.module('OnedriveControllers', ['onedrive-picker'])
 
       // Configure the options
         OneDriveSettingsProvider.configure({
-            linkType: 'webViewLink',//downloadLink
-            multiSelect: true,//multiselect
+            linkType: 'webViewLink',//or downloadLink
+            multiSelect: true,//or false
             theme: 'blue',//button color, whilte
           });
     }])

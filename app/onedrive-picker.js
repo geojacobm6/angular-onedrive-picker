@@ -1,5 +1,5 @@
 angular.module("onedrive-picker", []).provider("OneDriveSettings", function() {
-    this.linkType = 'webViewLink', this.multiselect = false, this.theme = 'blue', this.$get = function() {
+    this.linkType = 'webViewLink', this.multiSelect = true, this.theme = 'blue', this.$get = function() {
         return {
             linkType: this.linkType,
             multiSelect: this.multiSelect,
@@ -26,12 +26,12 @@ angular.module("onedrive-picker", []).provider("OneDriveSettings", function() {
                 success: onedrivesuccess,
                 cancel: function() {},
                 linkType : OneDriveSettings.linkType,
-                multiselect: OneDriveSettings.multiselect,
+                multiSelect: OneDriveSettings.multiSelect,
             };
             function onedrivesuccess(files){
                 scope.$apply(function() {
-                    for (var i = 0; i < files.length; i++){
-                        scope.odpickerFiles.push(files[i]);
+                    for (var i = 0; i < files.values.length; i++){
+                        scope.odpickerFiles.push(files.values[i]);
                     }
                 });
             };
